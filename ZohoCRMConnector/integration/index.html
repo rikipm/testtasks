@@ -1,0 +1,24 @@
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>Интеграция</title>
+	</head>
+	<body>
+		<form action="integration.php">
+			<p>Перед использованием приложения необходимо произвести интеграцию.<br>
+			Сначала зарегистрируйте приложение <a href="https://accounts.zoho.com/developerconsole">здесь</a><br>
+			В строке "Имя клиента" введите любое имя. В логах им будут подписаны все действия этого прииложения<br>
+			В строке "Домен клиента" введите домен по которому будет распологаться сервис (Например https://example.com)<br>
+			В строке "Авторизованные URL-адреса для перенаправления" укажите ваш домен + integration/handler.php (Например https//example.com/integration/handler.php)
+			Выберите тип WEB-BASED<br>
+			Вы получите ID и секрет клиента. Введите их ниже, а так-же введите URL адрес для перенаправления<br></p>
+			<label for="client_id">Client ID</label><br>
+			<input type="text" name="client_id" id="client_id">
+			<label for="secret">Secret</label><br>
+			<input type="text" name="secret" id="secret">
+			<label for="redirect_url">URL адрес для перенаправления</label><br>
+			<input type="text" name="redirect_url" id="redirect_url">
+			<input type="submit">
+		</form>
+	</body>
+</html>

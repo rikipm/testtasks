@@ -1,0 +1,761 @@
+1543593467a:1:{s:15:"desktop-faq.htm";a:6:{s:8:"fileName";s:15:"desktop-faq.htm";s:7:"content";s:23270:"[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onStart()
+{
+    $this->addCss('assets/css/main_desk.css');
+    $this->addCss('https://fonts.googleapis.com/css?family=Roboto');
+}
+?>
+==
+{repeater name="questionsAndAnswers" prompt="Добавить вопрос и ответ" tab="Вопросы и ответы"}
+    {variable type="text" name="question" label="Вопрос"}Вопрос{/variable}
+    {variable type="textarea" name="answer" label="Ответ"}Ответ{/variable}
+{/repeater}
+
+{variable name="phone" label="Телефон" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel1" label="Карусель (Лет роста компании)" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel2" label="Карусель (Адресов в нашей базе)" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel3" label="Карусель (Офисов по всей москве)" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel4" label="Карусель (Минут и документы готовы)" tab="Настройки FAQ" type="text"}{/variable}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		 {% styles %}
+		 {% put scripts %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		{% endput %}
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<title>{{ this.title }}</title>
+	</head>
+	<body>
+		<div class="container-fluid nopadding">
+			<div class="desktopHeader">
+				<div class="row nopadding">
+					<div class="header-bar-1 col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="header-bar-1 col-lg-2 col-md-4 nopadding">
+						<a class="menuButton" href="#"><img src={{ 'assets/images/ico-help.png'|theme }} class="menuIcon">Помощь</a>
+						<a class="menuButton" href="#"><img src={{ 'assets/images/ico-cabinet.png'|theme }} class="menuIcon">Кабинет</a>
+					</div>
+					<div class="header-bar-2 col-lg-4 col-md-4 nopadding">
+						<a class="menuButton2 d-none d-lg-inline" href="#"><img src={{ 'assets/images/ico-like.png'|theme }} class="menuIcon">16 лет на рынке</a>
+						<a class="menuButton2" href="#"><img src={{ 'assets/images/ico-money.png'|theme }} class="menuIcon">Финансовые гарантии</a>
+						<a class="menuButton2 d-none d-lg-inline" href="#"><img src={{ 'assets/images/ico-doc.png'|theme }} class="menuIcon">100% регистрация</a>
+					</div>
+					<div class="header-bar-1 col-lg-4 col-md-4 nopadding">
+						<a class="menuButton2" href="#"><img src={{ 'assets/images/ico-star.png'|theme }} class="menuIcon">Избранное: 0 адресов</a>
+					</div>
+					<div class="header-bar-1 col-lg-2 d-none d-lg-block nopadding"></div>
+				</div>
+				<div class="row desk-header">
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-1 header" style="padding: 0%; margin-left: -3%;">
+						<img src={{ 'assets/images/header-logo.png'|theme }} class="img-fluid">
+					</div>
+					<div class="col-2 header-textblock">
+						<h1 class="header-text"><span class="header-text-red">UR</span>ADRESA</h1>
+						<h5 class="header-subtitle">cамая полная база <br> юр. адресов в Москве</h5>
+					</div>
+					<div class="col-lg-3 col-md-5 header-search nopadding">
+						<div class="">
+							<img src={{ 'assets/images/ico-search.png'|theme }} style="width: 5%;">
+							<input class="form-control" style="display: inline; width: 70%;" type="text" placeholder="Поиск по району или улице" id="search-text-input" name="search">
+							<button type="submit" class="btn btn-outline-primary search-button" style="width: 21%;">найти</button>
+						</div>
+					</div>
+					<div class="col-md-4 col-lg-2" style="text-align: right;">
+						<span class="desk-header-phone">{{ phone }}</span><br>
+						<a class="desk-header-call" href="#">Подобрать юр. адрес</a>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				</div>
+				<div class="row desk-header">
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="d-none d-md-block d-lg-none nopadding"></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Каталог адресов</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Услуги</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Гарантии</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Отзывы</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Оплата и доставка</a></div>
+					<div class="col-1 header-menu-button-div d-none d-lg-block nopadding"><a class="header-menu-button" href="#">Акции</a></div>
+					<div class="col-1 header-menu-button-div d-none d-lg-block nopadding"><a class="header-menu-button" href="#">О компании</a></div>
+					<div class="col-1 header-menu-button-div d-none d-lg-block nopadding"><a class="header-menu-button" href="#">Контакты</a></div>
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				</div>
+			</div>
+			<div class="row" style="padding: 4%;">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-8 col-md-12 nopadding">
+						<span class="caption-desktop">FAQ. Часто задаваемые вопросы</span><br>
+						<span class="route-text-desktop">Главная / FAQ</span>
+					</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				<div class="col-lg-3 col-md-4">
+					<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-general">Общие вопросы</button>
+							<div class="collapse collapse-content" id="collapse-general">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-urquestinons">Вопросы по юр. адресам</button>
+							<div class="collapse collapse-content" id="collapse-urquestinons">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-processquestiongs">Вопросы по процессу работы</button>
+							<div class="collapse collapse-content" id="collapse-processquestiongs">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-dillerquestions">Вопросы по диллерству и сотрудничеству</button>
+							<div class="collapse collapse-content" id="collapse-dillerquestions">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-urquestinons2">Вопросы по юр. адресам</button>
+							<div class="collapse collapse-content" id="collapse-urquestinons2">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-processquestiongs2">Вопросы по процессу работы</button>
+							<div class="collapse collapse-content" id="collapse-processquestiongs2">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+				</div>
+				<div class="col-lg-5 col-md-8">
+					<div class="header-search" style="padding-top: 5%;">
+						<input class="form-control" style="display: inline; width: 70%;" type="text" placeholder="Быстрый поиск по вопросам" id="search-text-input" name="search">
+						<button type="submit" class="btn btn-outline-primary search-button" style="width: 25%;">найти</button>
+					</div>
+					{% for currentQuestion in questionsAndAnswers %}
+    					<div class="contentblock col-12">
+    						<h1 class="content-header">{{ currentQuestion.question }}</h1>
+    						<p class="content-text">{{ currentQuestion.answer }}</p>
+    					</div>
+    				{% endfor %}
+				</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-8 col-md-12 hotline-text">Работает горячая линия</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row rect-phone" style="position: relative;">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				<div class="col-lg-4 col-md-6">
+						<div class="text-phone">
+							<div class="text-phone-big">Остались вопросы?<br></div>
+							<div class="text-phone-small">Звоните прямо сейчас<br></div>
+							<div class="text-phone-big">{{ phone }}</div>
+						</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<img src={{ 'assets/images/woman.png'|theme }} class="woman-img">
+				</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-8 col-md-12 hotline-text">Наша компания в цифрах</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel1 }}</p>
+						<p class="carousel-content">Лет роста компании</p>
+					</div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel2 }}</p>
+						<p class="carousel-content">Адресов в нашей базе</p>
+					</div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel3 }}</p>
+						<p class="carousel-content">Офисов по всей москве</p>
+					</div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel4 }}</p>
+						<p class="carousel-content">Минут и документы готовы</p>
+					</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row nopadding">
+				<div class="col-lg-1 d-none d-lg-block nopadding" style="background: #1E4163;"></div>
+					<div class="col-md-12 d-none d-md-block d-lg-none nopadding">
+						<div class="collapse-spoiler-2">
+						<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-uradress">Юридические адреса</button>
+							<div class="collapse collapse2-content" id="collapse2-uradress">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-urquestinons">Дополнительные услуги</button>
+							<div class="collapse collapse2-content" id="collapse2-urquestinons">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-company">Компания</button>
+							<div class="collapse collapse2-content" id="collapse2-company">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-partners">Сотрудничество</button>
+							<div class="collapse collapse2-content" id="collapse2-partners">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-info">Информация</button>
+							<div class="collapse collapse2-content" id="collapse2-info">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding" style="background: #1E4163;"></div>
+			</div>
+			<div class="row" style="background: #336799">
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-2 col-md-4" style="margin-top: 5%">
+						<div class="footer-text-small">Любые виды оплаты и безналичный расчет!</div>
+					</div>
+					<div class="col-lg-6 col-md-8">
+						<img src={{ 'assets/images/ico-master.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-qiwi.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-visa.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-webmoney.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-yandex.png'|theme }} class="payment-type">
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block">
+						<div class="row">
+							<div class="col-lg-3 nopadding">
+							<img src={{ 'assets/images/ico-man.png'|theme }} class="footer-icon img-fluid">
+							</div>
+							<div class="col-lg-9 nopadding">
+							<div class="footer-text-small">Бесплатная доставка всех документов по Москве</div>
+							</div>
+						</div>
+					</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row" style="background: #336799">
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+				<div class="row">
+					<div class="col-5">
+						<div class="row nopadding">
+							<div class="col-4 header" style="padding: 0%; margin-left: -3%;">
+								<img src={{ 'assets/images/header-logo.png'|theme }} class="img-fluid">
+							</div>
+							<div class="col-8 header-textblock">
+								<h1 class="footer-text-white"><span class="footer-text-white">UR</span>ADRESA</h1>
+								<h5 class="footer-text-subtitle">cамая полная база <br> юр. адресов в Москве</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-5 d-md-none d-lg-block">
+						<div class="footer-bottom" style="text-align: center;">РаСоБи» 2006-2018. Все права защищены.<br> Использование материалов сайта - только с согласия администрации<br> г. Москва, Большая Почтовая ул., д. 36, стр. 6-7-8</div>
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row d-none d-md-block d-lg-none" style="background: #336799">
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+					<div class="footer-bottom" style="text-align: center;">РаСоБи» 2006-2018. Все права защищены.<br> Использование материалов сайта - только с согласия администрации<br> г. Москва, Большая Почтовая ул., д. 36, стр. 6-7-8</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+			</div>
+		</div>
+    	{% scripts %}
+	</body>
+</html>";s:5:"mtime";i:1543592822;s:6:"markup";s:23064:"{repeater name="questionsAndAnswers" prompt="Добавить вопрос и ответ" tab="Вопросы и ответы"}
+    {variable type="text" name="question" label="Вопрос"}Вопрос{/variable}
+    {variable type="textarea" name="answer" label="Ответ"}Ответ{/variable}
+{/repeater}
+
+{variable name="phone" label="Телефон" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel1" label="Карусель (Лет роста компании)" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel2" label="Карусель (Адресов в нашей базе)" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel3" label="Карусель (Офисов по всей москве)" tab="Настройки FAQ" type="text"}{/variable}
+{variable name="carousel4" label="Карусель (Минут и документы готовы)" tab="Настройки FAQ" type="text"}{/variable}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		 {% styles %}
+		 {% put scripts %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		{% endput %}
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<title>{{ this.title }}</title>
+	</head>
+	<body>
+		<div class="container-fluid nopadding">
+			<div class="desktopHeader">
+				<div class="row nopadding">
+					<div class="header-bar-1 col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="header-bar-1 col-lg-2 col-md-4 nopadding">
+						<a class="menuButton" href="#"><img src={{ 'assets/images/ico-help.png'|theme }} class="menuIcon">Помощь</a>
+						<a class="menuButton" href="#"><img src={{ 'assets/images/ico-cabinet.png'|theme }} class="menuIcon">Кабинет</a>
+					</div>
+					<div class="header-bar-2 col-lg-4 col-md-4 nopadding">
+						<a class="menuButton2 d-none d-lg-inline" href="#"><img src={{ 'assets/images/ico-like.png'|theme }} class="menuIcon">16 лет на рынке</a>
+						<a class="menuButton2" href="#"><img src={{ 'assets/images/ico-money.png'|theme }} class="menuIcon">Финансовые гарантии</a>
+						<a class="menuButton2 d-none d-lg-inline" href="#"><img src={{ 'assets/images/ico-doc.png'|theme }} class="menuIcon">100% регистрация</a>
+					</div>
+					<div class="header-bar-1 col-lg-4 col-md-4 nopadding">
+						<a class="menuButton2" href="#"><img src={{ 'assets/images/ico-star.png'|theme }} class="menuIcon">Избранное: 0 адресов</a>
+					</div>
+					<div class="header-bar-1 col-lg-2 d-none d-lg-block nopadding"></div>
+				</div>
+				<div class="row desk-header">
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-1 header" style="padding: 0%; margin-left: -3%;">
+						<img src={{ 'assets/images/header-logo.png'|theme }} class="img-fluid">
+					</div>
+					<div class="col-2 header-textblock">
+						<h1 class="header-text"><span class="header-text-red">UR</span>ADRESA</h1>
+						<h5 class="header-subtitle">cамая полная база <br> юр. адресов в Москве</h5>
+					</div>
+					<div class="col-lg-3 col-md-5 header-search nopadding">
+						<div class="">
+							<img src={{ 'assets/images/ico-search.png'|theme }} style="width: 5%;">
+							<input class="form-control" style="display: inline; width: 70%;" type="text" placeholder="Поиск по району или улице" id="search-text-input" name="search">
+							<button type="submit" class="btn btn-outline-primary search-button" style="width: 21%;">найти</button>
+						</div>
+					</div>
+					<div class="col-md-4 col-lg-2" style="text-align: right;">
+						<span class="desk-header-phone">{{ phone }}</span><br>
+						<a class="desk-header-call" href="#">Подобрать юр. адрес</a>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				</div>
+				<div class="row desk-header">
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="d-none d-md-block d-lg-none nopadding"></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Каталог адресов</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Услуги</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Гарантии</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Отзывы</a></div>
+					<div class="col-lg-1 col-md-2 header-menu-button-div"><a class="header-menu-button" href="#">Оплата и доставка</a></div>
+					<div class="col-1 header-menu-button-div d-none d-lg-block nopadding"><a class="header-menu-button" href="#">Акции</a></div>
+					<div class="col-1 header-menu-button-div d-none d-lg-block nopadding"><a class="header-menu-button" href="#">О компании</a></div>
+					<div class="col-1 header-menu-button-div d-none d-lg-block nopadding"><a class="header-menu-button" href="#">Контакты</a></div>
+					<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				</div>
+			</div>
+			<div class="row" style="padding: 4%;">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-8 col-md-12 nopadding">
+						<span class="caption-desktop">FAQ. Часто задаваемые вопросы</span><br>
+						<span class="route-text-desktop">Главная / FAQ</span>
+					</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				<div class="col-lg-3 col-md-4">
+					<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-general">Общие вопросы</button>
+							<div class="collapse collapse-content" id="collapse-general">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-urquestinons">Вопросы по юр. адресам</button>
+							<div class="collapse collapse-content" id="collapse-urquestinons">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-processquestiongs">Вопросы по процессу работы</button>
+							<div class="collapse collapse-content" id="collapse-processquestiongs">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-dillerquestions">Вопросы по диллерству и сотрудничеству</button>
+							<div class="collapse collapse-content" id="collapse-dillerquestions">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-urquestinons2">Вопросы по юр. адресам</button>
+							<div class="collapse collapse-content" id="collapse-urquestinons2">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler-desktop">
+							<button class="collapse-button btn-block" data-toggle="collapse" data-target="#collapse-processquestiongs2">Вопросы по процессу работы</button>
+							<div class="collapse collapse-content" id="collapse-processquestiongs2">
+								<a>Регистрировать предприятие на подобные адреса это законно?</a><br><br>
+								<a>Можно ли будет использовать офис для встреч?</a><br><br>
+								<a>В чем отличие массовых адресов от немассовых?</a><br><br>
+								<a>У Вас есть немассовые адреса?</a><br>
+							</div>
+						</div>
+				</div>
+				<div class="col-lg-5 col-md-8">
+					<div class="header-search" style="padding-top: 5%;">
+						<input class="form-control" style="display: inline; width: 70%;" type="text" placeholder="Быстрый поиск по вопросам" id="search-text-input" name="search">
+						<button type="submit" class="btn btn-outline-primary search-button" style="width: 25%;">найти</button>
+					</div>
+					{% for currentQuestion in questionsAndAnswers %}
+    					<div class="contentblock col-12">
+    						<h1 class="content-header">{{ currentQuestion.question }}</h1>
+    						<p class="content-text">{{ currentQuestion.answer }}</p>
+    					</div>
+    				{% endfor %}
+				</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-8 col-md-12 hotline-text">Работает горячая линия</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row rect-phone" style="position: relative;">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+				<div class="col-lg-4 col-md-6">
+						<div class="text-phone">
+							<div class="text-phone-big">Остались вопросы?<br></div>
+							<div class="text-phone-small">Звоните прямо сейчас<br></div>
+							<div class="text-phone-big">{{ phone }}</div>
+						</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<img src={{ 'assets/images/woman.png'|theme }} class="woman-img">
+				</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-8 col-md-12 hotline-text">Наша компания в цифрах</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel1 }}</p>
+						<p class="carousel-content">Лет роста компании</p>
+					</div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel2 }}</p>
+						<p class="carousel-content">Адресов в нашей базе</p>
+					</div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel3 }}</p>
+						<p class="carousel-content">Офисов по всей москве</p>
+					</div>
+					<div class="col-lg-2 col-md-3">
+						<p class="carousel-header">{{ carousel4 }}</p>
+						<p class="carousel-content">Минут и документы готовы</p>
+					</div>
+				<div class="col-lg-2 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row nopadding">
+				<div class="col-lg-1 d-none d-lg-block nopadding" style="background: #1E4163;"></div>
+					<div class="col-md-12 d-none d-md-block d-lg-none nopadding">
+						<div class="collapse-spoiler-2">
+						<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-uradress">Юридические адреса</button>
+							<div class="collapse collapse2-content" id="collapse2-uradress">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-urquestinons">Дополнительные услуги</button>
+							<div class="collapse collapse2-content" id="collapse2-urquestinons">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-company">Компания</button>
+							<div class="collapse collapse2-content" id="collapse2-company">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-partners">Сотрудничество</button>
+							<div class="collapse collapse2-content" id="collapse2-partners">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+						<div class="collapse-spoiler2">
+							<button class="collapse-button2 btn-block" data-toggle="collapse" data-target="#collapse2-info">Информация</button>
+							<div class="collapse collapse2-content" id="collapse2-info">
+								<hr class="arrow-hr">
+								<div class="arrow-up"></div>
+								<a>Каталог юрадресов</a><br><br>
+								<a>Немассовые адреса</a><br><br>
+								<a>Адреса с почтовым обслуживанием</a><br><br>
+								<a>Фактические адреса</a><br><br>
+								<a>Адреса от собственников</a><br>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block info-footer-block">
+						<span class="collapse-button2Desk nopadding">Юридические адреса</span>
+						<div class="footer-collapse-content">
+							<a>Каталог юрадресов</a><br><br>
+							<a>Немассовые адреса</a><br><br>
+							<a>Адреса с почтовым обслуживанием</a><br><br>
+							<a>Фактические адреса</a><br><br>
+							<a>Адреса от собственников</a><br>
+						</div>
+					</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding" style="background: #1E4163;"></div>
+			</div>
+			<div class="row" style="background: #336799">
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+					<div class="col-lg-2 col-md-4" style="margin-top: 5%">
+						<div class="footer-text-small">Любые виды оплаты и безналичный расчет!</div>
+					</div>
+					<div class="col-lg-6 col-md-8">
+						<img src={{ 'assets/images/ico-master.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-qiwi.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-visa.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-webmoney.png'|theme }} class="payment-type">
+						<img src={{ 'assets/images/ico-yandex.png'|theme }} class="payment-type">
+					</div>
+					<div class="col-lg-2 d-none d-lg-block d-xl-block">
+						<div class="row">
+							<div class="col-lg-3 nopadding">
+							<img src={{ 'assets/images/ico-man.png'|theme }} class="footer-icon img-fluid">
+							</div>
+							<div class="col-lg-9 nopadding">
+							<div class="footer-text-small">Бесплатная доставка всех документов по Москве</div>
+							</div>
+						</div>
+					</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row" style="background: #336799">
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+				<div class="row">
+					<div class="col-5">
+						<div class="row nopadding">
+							<div class="col-4 header" style="padding: 0%; margin-left: -3%;">
+								<img src={{ 'assets/images/header-logo.png'|theme }} class="img-fluid">
+							</div>
+							<div class="col-8 header-textblock">
+								<h1 class="footer-text-white"><span class="footer-text-white">UR</span>ADRESA</h1>
+								<h5 class="footer-text-subtitle">cамая полная база <br> юр. адресов в Москве</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-5 d-md-none d-lg-block">
+						<div class="footer-bottom" style="text-align: center;">РаСоБи» 2006-2018. Все права защищены.<br> Использование материалов сайта - только с согласия администрации<br> г. Москва, Большая Почтовая ул., д. 36, стр. 6-7-8</div>
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+			</div>
+			<div class="row d-none d-md-block d-lg-none" style="background: #336799">
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+					<div class="footer-bottom" style="text-align: center;">РаСоБи» 2006-2018. Все права защищены.<br> Использование материалов сайта - только с согласия администрации<br> г. Москва, Большая Почтовая ул., д. 36, стр. 6-7-8</div>
+				<div class="col-lg-1 d-none d-lg-block nopadding"></div>
+			</div>
+		</div>
+    	{% scripts %}
+	</body>
+</html>";s:4:"code";s:142:"function onStart()
+{
+    $this->addCss('assets/css/main_desk.css');
+    $this->addCss('https://fonts.googleapis.com/css?family=Roboto');
+}";s:10:"staticPage";a:2:{s:10:"useContent";s:1:"1";s:7:"default";s:1:"0";}}}

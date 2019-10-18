@@ -1,0 +1,259 @@
+.row {
+	padding: 1% !important;
+	margin: 0 !important;
+}
+
+.header-text {
+	display: inline-block;
+	font-size: 3.5vw;
+	font-weight: bold;
+	color: #A80532;
+}
+
+.header-text-red {
+	color: #3A64A2;
+}
+
+.header-textblock {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.header-subtitle {
+	color: #646464;
+	font-size: 1.7vw;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.header-menu-button {
+	display: inline-block;
+}
+
+.container-fluid {
+	margin-left: 0%;
+	padding-left: 6.2%;
+	padding-right: 6.2%;
+	margin-right: 0%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed; 
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden; 
+    padding-top: 60px;
+    transition: 0.3s; 
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.caption {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 1000;
+	font-size: 7.5vw;
+}
+
+.route-text {
+	font-family: 'Roboto', sans-serif;
+	color: #336799;
+	font-size: 6vw;
+}
+
+.search-button {
+	border-radius: 0px;
+}
+
+.collapse-button {
+	background: #336799;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 1000;
+	font-size: 5.9vw;
+	color: #ffffff;
+	padding: 3.2vw;
+}
+
+.collapse-content {
+	background: #1E4163;
+	font-family: 'Roboto', sans-serif;
+	font-size: 5.2vw;
+	color: #ffffff;
+	padding: 4vw;
+}
+
+.collapse-spoiler {
+	margin-top: 5vw;
+}
+
+.content-header {
+	color: #336799;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 1000;
+	font-size: 7.5vw;
+}
+
+.contentblock {
+	margin-top: 20vw;
+}
+
+.content-text {
+	font-family: 'Roboto', sans-serif;
+	color: #595959;
+	font-size: 5.9vw;
+}
+
+.caption-phone {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 1000;
+	font-size: 6.8vw;
+	margin: auto;
+	padding-bottom: 5vw;7788888888888888888888888888778877878
+}
+
+.questions-phone {
+	width: 100%;
+	position: relative;
+	padding-bottom: 5vw;
+}
+
+.rect-phone {
+	width: 100%;
+}
+
+.text-phone {
+	position: absolute;
+    top: 10%;
+    width: 100%;
+}
+
+.text-phone-big {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 1000;
+	font-size: 9vw;
+	color: #ffffff;
+	text-align: center;
+}
+
+.text-phone-small {
+	font-family: 'Roboto', sans-serif;
+	font-size: 6.8vw;
+	color: #ffffff;
+	text-align: center;
+}
+
+.carousel-header {
+	font-family: 'Roboto', sans-serif;
+	font-size: 22.6vw;
+	color: #A80532;
+	font-weight: normal;
+}
+
+.carousel-content {
+	font-family: 'Roboto', sans-serif;
+	font-size: 6vw;
+	color: #000000;
+	font-weight: normal;
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev{
+    display:block;
+}
+
+.cacarousel-control-prev .carousel-control-next {
+	opacity: 100; !important
+}
+
+.collapse-button2 {
+	background: #1E4163;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 1000;
+	font-size: 5.9vw;
+	color: #ffffff;
+	padding: 8.8vw;
+	border: 0px;
+	margin-top: -1px;
+}
+
+.collapse2-content {
+	background: #193652;
+	font-family: 'Roboto', sans-serif;
+	font-size: 4.5vw;
+	color: #607f9b;
+	padding: 0vw;
+	text-align: center;
+	padding-bottom: 5vw;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 10vw solid transparent;
+  border-right: 10vw solid transparent;
+  border-bottom: 5vw solid #193652;
+  z-index: 1;
+  position: relative;
+  bottom: 4.9vw;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.arrow-hr {
+	margin-top: 0rem;
+    margin-bottom: 0rem;
+    border: 0;
+    border-top: 5vw solid #1E4163;
+    padding: 0;
+    margin: 0;
+}
+
+.footer {
+	background-color: #336799;
+}
+
+.footer-text {
+	font-family: 'Roboto', sans-serif;
+	font-size: 5.2vw;
+	color: #9EBFDE;
+	padding: 1vw;
+	text-align: center;
+	width: 100%;
+}
+
+.footer-image {
+	width: 100vw;
+	height: 40vw !important;
+}

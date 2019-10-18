@@ -1,0 +1,27 @@
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>Отправить лид</title>
+	</head>
+	<body>
+		<form action="send.php">
+			<label for="name">Фамилия и имя</label><br>
+			<input type="text" name="name" pattern="^[A-Za-zА-Яа-яЁё]+\s[A-Za-zА-Яа-яЁё]+$" placeholder="Пупкин Василий" id="name" required>
+			<label for="phone">Телефон</label><br>
+			<input type="text" name="phone" pattern="\+[ 0-9]+$" id="phone" required>
+			<label for="email">Email</label><br>
+			<input type="text" name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" id="email" required>
+			<label for="company">Компания</label><br>
+			<input type="text" name="company" id="company" required>
+			<label for="source">Источник</label><br>
+			<select name="source" id="source">
+				<option value="Реклама">Реклама</option>
+				<option selected value="Предложение услуг по телефону">Предложение услуг по телефону</option>
+				<option value="Рекомендации от сотрудников">Рекомендации от сотрудников</option>
+				<option value="Рекомендации от внешних источников">Рекомендации от внешних источников</option>
+		    </select>
+			<br>
+			<input type="submit">
+		</form>
+	</body>
+</html>
