@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VK Statistic</title>
+</head>
+<body>
+    <form action="handler.php" method="post">
+        <label for="access_token">Токен доступа (Управление -> Работа с API -> ключи доступа):</label>
+        <input type="text" name="access_token" id="access_token" required>
+        <label for="date_from">Время с:</label>
+        <input type="date" name="date_from" id="date_from" required>
+        <label for="date_to">Время до:</label>
+        <input type="date" name="date_to" id="date_to" required>
+        <button type="submit">Получить статистику</button>
+    </form>
+</body>
+</html>
