@@ -11,8 +11,8 @@ require 'VkConversationsStatisticInterface.php';
 class VkConversationsStatistic implements VkConversationsStatisticInterface
 {
     const ROOT_URL = 'https://api.vk.com/method/';
-    const OVERDUE_TIME = 15 * 60; //Time, after which conversation becomes overdue
     const API_VERSION = '5.52';
+    const OVERDUE_TIME = 15 * 60; //Time, after which conversation becomes overdue
 
     private $access_token;
     private $date_from = 0;
@@ -32,18 +32,18 @@ class VkConversationsStatistic implements VkConversationsStatisticInterface
      *
      * @param string $method
      * @param array $data
-     * @return \stdClass
+     * @return \stdClass response
      * @throws \Exception if API return error.
      */
     private function sendRequest($method, $data = [])
     {
-        $link = self::ROOT_URL;
-        $link .= $method;
-        $link .= '?v=' . self::API_VERSION . '&';
-        $link .= 'access_token=' . $this->access_token . '&';
-        $link .= http_build_query($data); //Pass additional parameters
+        $url = self::ROOT_URL;
+        $url .= $method;
+        $url .= '?v=' . self::API_VERSION . '&';
+        $url .= 'access_token=' . $this->access_token . '&';
+        $url .= http_build_query($data);
 
-        $request = curl_init($link);
+        $request = curl_init($url);
 
         curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
 
@@ -142,6 +142,10 @@ class VkConversationsStatistic implements VkConversationsStatisticInterface
         return $reply_times;
     }
 
+    /**
+     * @param int $date_from
+     * @param int $date_to
+     */
     public function setDatePeriod($date_from, $date_to)
     {
         $this->date_from = $date_from;
