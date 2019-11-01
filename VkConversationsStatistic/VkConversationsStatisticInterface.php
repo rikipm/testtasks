@@ -11,12 +11,12 @@ interface VkConversationsStatisticInterface
      * VkConversationStatistic constructor.
      * @param string $access_token
      */
-    public function __construct($access_token);
+    public function __construct(string $access_token);
 
     /**
      * @param \DatePeriod $date_period
      */
-    public function setDatePeriod($date_from, $date_to);
+    public function setDatePeriod(int $date_from, int $date_to);
 
     /**
      * @return int
