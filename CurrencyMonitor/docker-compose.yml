@@ -1,9 +1,30 @@
-version: '2'
+version: '3'
 services:
-  php:
-    image: yiisoftware/yii2-php:7.1-apache
-    volumes:
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      - ./:/app:delegated
+  nginx:
+    build: './docker/nginx/'
+    depends_on:
+      - db
+      - php-fpm
     ports:
-      - '8000:80'
+      - "80:80"
+    volumes:
+      - ./:/var/www/
+  php-fpm:
+    build: './docker/php-fpm/'
+    env_file:
+      - .env
+    volumes:
+      - ./:/var/www/
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_ROOT_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
