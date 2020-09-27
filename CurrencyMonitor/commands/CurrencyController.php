@@ -19,7 +19,9 @@ class CurrencyController extends Controller
         foreach ($currenciesData as $item) {
             $currency = Currency::findOne($item["NumCode"]);
             if (empty($currency)) {
-                $currency = new Currency($item["NumCode"]);
+                $currency = new Currency([
+                    'id' => $item["NumCode"]
+                ]);
             }
 
             $currency->name = $item["Name"];
