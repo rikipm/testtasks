@@ -14,6 +14,10 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+        'CBRCurrencyGrabber' => [
+            'class' => 'app\components\CBRCurrencyGrabber',
+            'source' => 'http://www.cbr.ru/scripts/XML_daily.asp',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
