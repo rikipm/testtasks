@@ -4,34 +4,58 @@ namespace app\components;
 
 use SimpleXMLElement;
 
+/**
+ * Class CBRCurrencyGrabber
+ * @package app\components
+ */
 class CBRCurrencyGrabber
 {
+    /**
+     * @var string
+     */
     public string $source;
+    /**
+     * @var string
+     */
+    public string $decimal_separator = '.';
 
-    private function getRawData()
+    /**
+     * Get raw data from source
+     *
+     * @return string
+     */
+    private function getRawData(): string
     {
         return file_get_contents($this->source);
     }
 
-    public function parseData($rawData)
+    /**
+     * parse currency data from XML string to array
+     *
+     * @param string $xml
+     * @return array
+     */
+    public function parseXMLData(string $xml): array
     {
-        $data = new SimpleXMLElement($rawData);
+        $data = new SimpleXMLElement($xml);
         $valCurs = $data->children();
 
         $parsed_data = [];
         foreach ($valCurs as $item) {
             $item = (array)$item;
-            $item = str_replace(',', '.', $item);
+            $item = str_replace(',', $this->decimal_separator, $item);
             $parsed_data[] = $item;
         }
 
         return $parsed_data;
     }
 
-    public function getCurrencies()
+    /**
+     * @return array
+     */
+    public function getCurrencies(): array
     {
-        $raw_data = $this->getRawData();
-        $data = $this->parseData($raw_data);
-        return $data;
+        $xml = $this->getRawData();
+        return $this->parseXMLData($xml);
     }
 }

@@ -9,6 +9,10 @@ use yii\console\Controller;
 
 class CurrencyController extends Controller
 {
+
+    /**
+     * Refresh currencies in database
+     */
     public function actionRefresh()
     {
         $currenciesData = Yii::$app->CBRCurrencyGrabber->getCurrencies();
@@ -22,7 +26,6 @@ class CurrencyController extends Controller
             $currency->rate = $item["Value"];
 
             $currency->save();
-
         }
     }
 
