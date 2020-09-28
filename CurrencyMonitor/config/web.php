@@ -10,7 +10,7 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
@@ -22,11 +22,13 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
             'enableSession' => false,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'response' => [
+            'format' => \yii\web\Response::FORMAT_JSON
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

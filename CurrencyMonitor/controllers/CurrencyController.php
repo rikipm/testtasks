@@ -6,13 +6,42 @@ namespace app\controllers;
 
 use app\models\Currency;
 use yii\data\ActiveDataProvider;
-use yii\helpers\Json;
-use yii\web\Controller;
+use yii\filters\AccessControl;
+use yii\filters\auth\HttpBearerAuth;
+use yii\rest\Controller;
 use yii\web\NotFoundHttpException;
 
+/**
+ * Class CurrencyController
+ * @package app\controllers
+ */
 class CurrencyController extends Controller
 {
-    public function actionCurrencies()
+    /**
+     * {@inheritDoc}
+     */
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['access'] = [
+            'class' => AccessControl::class,
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+            ],
+        ];
+
+        $behaviors['authenticator']['authMethods'] = [HttpBearerAuth::class];
+
+        return $behaviors;
+    }
+
+    /**
+     * @return array
+     */
+    public function actionCurrencies(): array
     {
         $provider = new ActiveDataProvider([
             'query' => Currency::find(),
@@ -20,17 +49,21 @@ class CurrencyController extends Controller
                 'pageSize' => 10,
             ]
         ]);
-        return Json::encode($provider->getModels());
+        return $provider->getModels();
     }
 
-    public function actionCurrency($id)
+    /**
+     * @param $id
+     * @return Currency|null
+     * @throws NotFoundHttpException
+     */
+    public function actionCurrency(int $id): ?Currency
     {
         $model = Currency::findOne($id);
         if (empty($model)) {
             throw new NotFoundHttpException();
-        } else {
-            return $model->rate;
         }
+        return $model;
     }
 
 }
