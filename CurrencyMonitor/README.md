@@ -42,7 +42,7 @@ docker-compose exec php-fpm php ./yii migrate --interactive=0
 
 5.Обновить курс валют можно командой 
 ```
-docker-compose exec php-fpm 
+docker-compose exec php-fpm ./yii currency/refresh
 ```
 
 ## Деплой без докера:
